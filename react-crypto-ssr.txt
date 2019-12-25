@@ -1,0 +1,81 @@
+yarn init
+
+yarn add express
+
+********* server.js in root *********
+const express = require('express');
+
+const app = express();
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, () => {
+    console.log(`Server started at port ${PORT}`)
+});
+********* server.js in root *********
+
+node server.js
+
+yarn add react react-dom react-router react-router-dom
+
+new folder in root src
+inside pages folder
+home.js
+
+in src folder new file
+app.js
+
+yarn add webpack webpack-cli webpack-node-externals
+
+yarn add babel-loader@7.1.5 babel-cli babel-core babel-polyfill babel-preset-env babel-preset-react babel-preset-es2015 babel-preset-es2017 babel-preset-stage-0
+
+********* webpack.server.js in root *********
+const path = require('path');
+const webpackNodeExternals = require('webpack-node-externals');
+
+module.exports = {
+    target: 'node',
+    entry: './server.js',
+    output: {
+        filename: 'bundle.js',
+        path: path.resolve(_dirname, 'build'),
+        publicPath: '/build'
+    },
+    module: {
+        rules: [
+            {
+                test: /\.js$/,
+                loader: 'babel-loader',
+                exclude: '/node_modules/',
+                options: {
+                    presets: [
+                        'react',
+                        'stage-0',
+                        ['env', {
+                            target: { browsers: ['last 2 versions'] }
+                        }]
+                    ]
+                }
+            }
+        ]
+    },
+    externals: [webpackNodeExternals()]
+}
+********* webpack.server.js in root *********
+
+package.json
+
+below licence
+
+"scripts": {
+    "webpack:server": "webpack --config webpack.server.js --watch"
+}
+
+yarn add nodemon npm-run-all
+
+in src client.js
+
+in root webpack.client.js
+
+yarn add react-helmet
+
+v=spf1 +a +mx +ip4:94.127.7.170 -all
